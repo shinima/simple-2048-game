@@ -14,7 +14,7 @@ const Tile = ({ id, x, y, number }) => {
     <div
       data-id={id}
       className={`tile number-${number}`}
-      style={{ left, top }}
+      style={{ transform: `translate(${left}px, ${top}px)` }}
     >
       {number}
     </div>
