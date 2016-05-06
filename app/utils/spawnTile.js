@@ -15,7 +15,7 @@ export default function spawnTile(state) {
   }
   if (emptyEntries.length > 0) {
     const maxId = state.reduce((_maxId, record, id) => Math.max(_maxId, id), 0)
-    const number = choice([1, 1, 2, 2, 4])
+    const number = choice([1, 1, 1, 1, 2, 2, 4])
     const [x, y] = choice(emptyEntries)
     return state.set(maxId + 1, TileRecord({ x, y, number }))
   }
