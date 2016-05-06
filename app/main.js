@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
-import App from './containers/App.jsx'
+import App from './App.jsx'
 import store from './store'
 import 'normalize.css'
 
@@ -16,9 +16,9 @@ ReactDOM.render(
 )
 
 if (module.hot) {
-  module.hot.accept('./containers/App.jsx', () => {
+  module.hot.accept('./App.jsx', () => {
     /* eslint-disable global-require */
-    const NewApp = require('./containers/App.jsx').default
+    const NewApp = require('./App.jsx').default
     ReactDOM.render(
       <AppContainer>
         <Provider store={store}>

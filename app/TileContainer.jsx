@@ -1,29 +1,26 @@
 import React from 'react'
 import { List } from 'immutable'
 import { connect } from 'react-redux'
-import { getPropsForTileContainer } from '../selectors'
+import { getPropsForTileContainer } from './selectors'
 
-@connect(getPropsForTileContainer)
-export default class TileContainer extends React.Component {
-  static propTypes = {
-    tiles: React.PropTypes.instanceOf(List).isRequired,
-  }
-
-  render() {
-    const tiles = []
-    this.props.tiles.forEach((row, y) => (
-        row.forEach((cell, x) => {
-          tiles.push(<Tile key={`${x}-${y}`} x={x} y={y} number={Number(cell)} />)
-        })
-      )
+const TileContainer = ({ tiles }) => {
+  const tilesHtml = []
+  tiles.forEach((row, y) => (
+      row.forEach((cell, x) => {
+        tilesHtml.push(<Tile key={`${x}-${y}`} x={x} y={y} number={Number(cell)} />)
+      })
     )
-    return (
-      <div className="tile-container">
-        {tiles}
-      </div>
-    )
-  }
+  )
+  return (
+    <div className="tile-container">
+      {tilesHtml}
+    </div>
+  )
 }
+TileContainer.propTypes = {
+  tiles: React.PropTypes.instanceOf(List).isRequired,
+}
+export default connect(getPropsForTileContainer)(TileContainer)
 
 const tileSize = 107
 const gridSize = 106

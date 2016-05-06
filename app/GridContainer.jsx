@@ -1,13 +1,4 @@
 import React from 'react'
-import '../style.styl'
-import TileContainer from './TileContainer.jsx'
-
-export default () => (
-  <div className="game-container">
-    <GridContainer rowCount={4} columnCount={4} />
-    <TileContainer />
-  </div>
-)
 
 const GridCell = () => (
   <div className="grid-cell" />
@@ -39,3 +30,4 @@ GridContainer.propTypes = {
   rowCount: React.PropTypes.number.isRequired,
   columnCount: React.PropTypes.number.isRequired,
 }
+export default GridContainer
