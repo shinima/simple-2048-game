@@ -6,13 +6,20 @@ export default function isGameOver(state) {
     return false
   }
   const matrix = genMatrixFromState(state)
-  for (let y = 1; y < SIZE; y++) {
-    for (let x = 1; x < SIZE; x++) {
+  for (let y = 0; y < SIZE; y++) {
+    for (let x = 0; x < SIZE; x++) {
       const number = matrix[y][x].number
-      const above = matrix[y - 1][x].number
-      const left = matrix[y][x - 1].number
-      if (number === above || number === left) {
-        return false
+      if (matrix[y - 1][x]) {
+        const above = matrix[y - 1][x].number
+        if (number === above) {
+          return false
+        }
+      }
+      if (matrix[x - 1][y]) {
+        const left = matrix[x - 1][y].number
+        if (number === left) {
+          return false
+        }
       }
     }
   }
